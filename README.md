@@ -16,4 +16,7 @@ Example:
 
 
 
+> Before running earnapp check this : https://help.earnapp.com/hc/en-us/articles/10201052442897-Why-was-my-IP-banned-
+
+
 If you are new to earnapp, follow this invitation : https://earnapp.com/i/iz43tfp
