@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+
+echo " Static hostname: ${HOST}"
+echo "       Icon name: computer-desktop"
+echo "         Chassis: desktop"
+echo "      Machine ID: $(cat /etc/machine-id)"
+echo "         Boot ID: -"
+echo "Operating System: $(lsb_release -sd)"
+echo "          Kernel: $(uname -sr)"
+echo "    Architecture: x86-64"
+echo " Hardware Vendor: $(cat /sys/class/dmi/id/board_vendor)"
+echo "  Hardware Model: $(cat /sys/class/dmi/id/product_name)"
