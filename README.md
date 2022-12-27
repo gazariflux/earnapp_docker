@@ -14,3 +14,6 @@ Example:
         -e NOTFY_TELEGRAM_WEBHOOK_URL="https://api.telegram.org/bot<YourBOTToken>/sendMessage?chat_id=<channel_id>&text=" \
         gazari/earnapp_docker:latest
 
+
+
+If you are new to earnapp, follow this invitation : https://earnapp.com/i/iz43tfp
