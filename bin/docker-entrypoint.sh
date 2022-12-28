@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
 
-
-if [[ ! -f /etc/earnapp/uuid ]]; 
-then
-    echo "First run"
+function run_earnapp_install {
     echo "Prepare installation of earnapp."
-    # wget -qO- https://brightdata.com/static/earnapp/install.sh > /tmp/earnapp.sh 
     curl -sL https://brightdata.com/static/earnapp/install.sh > /tmp/earnapp.sh
     grep -E "^(BASE_URL|VERSION|OS_NAME|OS_ARCH)" /tmp/earnapp.sh > /tmp/earnapp_vars.sh
     PRODUCT="earnapp"
@@ -32,7 +28,12 @@ then
     chmod +x /tmp/earnapp
     /tmp/earnapp install --auto 2>&1 | tee /tmp/earnapp_install.log
     echo "Installation is done."    
+}
 
+if [[ ! -f /etc/earnapp/uuid ]];
+then
+    echo "First run"
+    run_earnapp_install
     # notify user to register instance.
     NODE_SDK_UUID=$(cat /etc/earnapp/uuid)
     MESSAGE="Your earnapp instance is installed and will start soon. Use this link to register instance: https://earnapp.com/r/${NODE_SDK_UUID}"
@@ -50,9 +51,11 @@ then
         echo "Sending notification to telegram."
         curl "${NOTFY_TELEGRAM_WEBHOOK_URL}${MESSAGE}"
     fi
+elif [[ ! -f /usr/bin/earnapp ]];
+then
+    echo "Found configuration but no earnapp binary."
+    run_earnapp_install
 fi
-
-
 
 echo "Starting earnapp."
 nohup /usr/bin/earnapp run

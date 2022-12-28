@@ -10,6 +10,7 @@ At first launch, earnapp is initialized and will send you a notification with th
 Example:
 
     docker run \
+        -v $PWD/data:/etc/earnapp \
         -e NOTIFY_DISCORD_WEBHOOK_URL="<DISCORD_WEBHOOK_URL>" \
         -e NOTFY_TELEGRAM_WEBHOOK_URL="https://api.telegram.org/bot<YourBOTToken>/sendMessage?chat_id=<channel_id>&text=" \
         gazari/earnapp_docker:latest
